@@ -50,58 +50,31 @@ A modern, fully functional e-commerce web application built with React and Vite.
 
 MyShop/
 ├── public/
-
 ├── src/
-
 │   ├── components/
-
 │   │   ├── Navbar.jsx
-
 │   │   ├── Footer.jsx
-
 │   │   ├── ProductCard.jsx
-
 │   │   └── Loader.jsx
-
 │   ├── pages/
-
 │   │   ├── Home.jsx
-
 │   │   ├── ProductDetail.jsx
-
 │   │   ├── Cart.jsx
-
 │   │   ├── Wishlist.jsx
-
 │   │   ├── Checkout.jsx
-
 │   │   └── Profile.jsx
-
 │   ├── redux/
-
 │   │   ├── store.js
-
 │   │   ├── CartSlice.js
-
 │   │   └── WishlistSlice.js
-
 │   ├── context/
-
 │   │   └── ThemeContext.jsx
-
 │   ├── App.jsx
-
 │   ├── main.jsx
-
 │   └── index.css
-
 ├── index.html
-
 ├── tailwind.config.js
-
 ├── vite.config.js
-
 ├── package.json
-
 └── README.md
 

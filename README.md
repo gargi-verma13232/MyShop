@@ -47,7 +47,7 @@ A modern, fully functional e-commerce web application built with React and Vite.
 ---
 
 ## Folder Structure
-' ' '
+<pre>
 MyShop/
 ├── public/
 ├── src/
@@ -76,4 +76,4 @@ MyShop/
 ├── tailwind.config.js
 ├── vite.config.js
 ├── package.json
-' ' '
+</pre>

@@ -1,4 +1,4 @@
-# MyShop — E-Commerce Web Application
+# ShopMe— E-Commerce Web Application
 
 A modern, fully functional e-commerce web application built with React and Vite. MyShop offers a seamless shopping experience with product browsing, cart and wishlist management, checkout with multiple payment options, and a responsive dark/light theme.
 
@@ -43,3 +43,38 @@ A modern, fully functional e-commerce web application built with React and Vite.
 | Tailwind CSS | UI Styling & Responsive Design |
 | Context API | Dark / Light Theme Management |
 | Fake Store API | Product Data Sour
+
+---
+
+## Folder Structure
+
+MyShop/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   ├── ProductCard.jsx
+│   │   └── Loader.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── ProductDetail.jsx
+│   │   ├── Cart.jsx
+│   │   ├── Wishlist.jsx
+│   │   ├── Checkout.jsx
+│   │   └── Profile.jsx
+│   ├── redux/
+│   │   ├── store.js
+│   │   ├── CartSlice.js
+│   │   └── WishlistSlice.js
+│   ├── context/
+│   │   └── ThemeContext.jsx
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── index.html
+├── tailwind.config.js
+├── vite.config.js
+├── package.json
+└── README.md
+

@@ -14,24 +14,39 @@ const Home = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        let url = "https://fakestoreapi.com/products";
-        if (categoryQuery) {
-          url = `https://fakestoreapi.com/products/category/${categoryQuery}`;
+        let url = `https://dummyjson.com/products?limit=100`;
+        if (searchQuery) {
+          url = `https://dummyjson.com/products/search?q=${searchQuery}&limit=100`;
+        } else if (categoryQuery) {
+          url = `https://dummyjson.com/products/category/${categoryQuery}?limit=100`;
         }
+        
         const res = await fetch(url);
         const data = await res.json();
-        setProducts(data);
+        
+        const mappedProducts = data.products.map(p => ({
+          id: p.id,
+          title: p.title,
+          price: Math.round(p.price * 83),
+          description: p.description,
+          category: p.category,
+          image: p.thumbnail,
+          rating: {
+            rate: p.rating,
+            count: p.reviews ? p.reviews.length : Math.floor(Math.random() * 200) + 10
+          }
+        }));
+        
+        setProducts(mappedProducts);
       } catch (err) {
         console.error("Failed to fetch products", err);
       }
       setLoading(false);
     };
     fetchProducts();
-  }, [categoryQuery]);
+  }, [searchQuery, categoryQuery]);
 
-  const filtered = products.filter((p) =>
-    p.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+
 
   if (loading) {
     return (
@@ -44,16 +59,10 @@ const Home = () => {
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      {/* Banner */}
-      <div className="bg-gradient-to-r from-teal-700 to-teal-500 text-white text-center py-10 px-4">
-        <h1 className="text-4xl font-bold mb-2">Welcome to ShopMe 🛒</h1>
-        <p className="text-lg text-teal-100">Best deals. Every day.</p>
-      </div>
-
+    <div className="bg-gray-100 dark:bg-gray-900 min-h-screen transition-colors duration-200">
       {/* Products Grid */}
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
           {searchQuery
             ? `Results for "${searchQuery}"`
             : categoryQuery
@@ -61,11 +70,11 @@ const Home = () => {
             : "All Products"}
         </h2>
 
-        {filtered.length === 0 ? (
-          <p className="text-gray-500 text-center text-lg">No products found.</p>
+        {products.length === 0 ? (
+          <p className="text-gray-500 dark:text-gray-400 text-center text-lg">No products found.</p>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filtered.map((product) => (
+            {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

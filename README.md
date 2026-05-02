@@ -1,16 +1,73 @@
-# React + Vite
+# 🛒 ShopMe — E-Commerce Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, fully functional e-commerce platform built with React, inspired by Amazon. ShopMe allows users to browse products, manage their cart and wishlist, and complete purchases with multiple payment options.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Demo
+[Click here to view live](#) <!-- Add your Vercel link after deployment -->
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📸 Screenshots
+<!-- Add screenshots after deployment -->
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎯 Features
+
+- 🏠 **Home Page** — Product grid with banner, search and category filter
+- 📄 **Product Detail** — Full product info, ratings, add to cart and wishlist
+- 🛒 **Cart** — Quantity controls, subtotal calculation, order summary
+- ❤️ **Wishlist** — Save favourite products, move to cart
+- 📦 **Checkout** — Delivery form with Card, QR Code and Cash on Delivery payment
+- 👤 **Profile** — Edit profile, view cart and wishlist stats
+- 🌙 **Dark / Light Mode** — Full theme toggle with localStorage persistence
+- 🔍 **Search** — Search products by name in real time
+- 📂 **Category Filter** — Filter by Electronics, Jewellery, Men's and Women's Clothing
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| React + Vite | Frontend Framework |
+| Redux Toolkit | Cart & Wishlist State Management |
+| React Router DOM | Client Side Routing |
+| Tailwind CSS | UI Styling & Responsive Design |
+| Context API | Dark/Light Theme Management |
+| Fake Store API | Real Product Data |
+| LocalStorage | Theme Persistence |
+
+---
+
+## 📁 Folder Structure
+ShopMe/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   ├── ProductCard.jsx
+│   │   └── Loader.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── ProductDetail.jsx
+│   │   ├── Cart.jsx
+│   │   ├── Wishlist.jsx
+│   │   ├── Checkout.jsx
+│   │   └── Profile.jsx
+│   ├── redux/
+│   │   ├── store.js
+│   │   ├── CartSlice.js
+│   │   └── WishlistSlice.js
+│   ├── context/
+│   │   └── ThemeContext.jsx
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── tailwind.config.js
+├── vite.config.js
+└── README.md
+

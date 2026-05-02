@@ -17,9 +17,23 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true);
-      const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-      const data = await res.json();
-      setProduct(data);
+      const res = await fetch(`https://dummyjson.com/products/${id}`);
+      const p = await res.json();
+      
+      const mappedProduct = {
+        id: p.id,
+        title: p.title,
+        price: Math.round(p.price * 83),
+        description: p.description,
+        category: p.category,
+        image: p.thumbnail,
+        rating: {
+          rate: p.rating,
+          count: p.reviews ? p.reviews.length : Math.floor(Math.random() * 200) + 10
+        }
+      };
+      
+      setProduct(mappedProduct);
       setLoading(false);
     };
     fetchProduct();
@@ -45,10 +59,10 @@ const ProductDetail = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
-      <div className="bg-white rounded-2xl shadow-lg flex flex-col md:flex-row gap-10 p-8">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg flex flex-col md:flex-row gap-10 p-8">
         
         {/* Image */}
-        <div className="flex-1 flex items-center justify-center bg-gray-50 rounded-xl p-6">
+        <div className="flex-1 flex items-center justify-center bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
           <img
             src={product.image}
             alt={product.title}
@@ -62,7 +76,7 @@ const ProductDetail = () => {
             <p className="text-xs text-teal-600 uppercase font-semibold mb-2">
               {product.category}
             </p>
-            <h1 className="text-2xl font-bold text-gray-800 mb-4">
+            <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
               {product.title}
             </h1>
 
@@ -71,20 +85,20 @@ const ProductDetail = () => {
               <div className="flex text-amber-400">
                 {"⭐".repeat(Math.round(product.rating?.rate))}
               </div>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-gray-500 dark:text-gray-400">
                 {product.rating?.rate} / 5 ({product.rating?.count} reviews)
               </span>
             </div>
 
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
               {product.description}
             </p>
           </div>
 
           {/* Price & Buttons */}
           <div>
-            <p className="text-3xl font-bold text-teal-700 mb-6">
-              ${product.price}
+            <p className="text-3xl font-bold text-teal-700 dark:text-teal-400 mb-6">
+              ₹{product.price}
             </p>
 
             <div className="flex gap-4">
@@ -108,7 +122,7 @@ const ProductDetail = () => {
                 className={`px-5 py-3 rounded-xl text-xl transition ${
                   isWishlisted
                     ? "bg-red-100 text-red-500"
-                    : "bg-gray-100 text-gray-400 hover:text-red-400"
+                    : "bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-red-400"
                 }`}
               >
                 {isWishlisted ? "❤️" : "🤍"}

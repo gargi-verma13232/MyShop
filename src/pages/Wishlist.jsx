@@ -11,7 +11,7 @@ const Wishlist = () => {
     return (
       <div className="flex flex-col items-center justify-center h-64 gap-4">
         <p className="text-5xl">❤️</p>
-        <p className="text-xl font-semibold text-gray-600">Your wishlist is empty!</p>
+        <p className="text-xl font-semibold text-gray-600 dark:text-gray-400">Your wishlist is empty!</p>
         <Link
           to="/"
           className="bg-teal-700 text-white px-6 py-2 rounded-lg hover:bg-teal-800 transition"
@@ -24,13 +24,13 @@ const Wishlist = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">❤️ Your Wishlist</h1>
+      <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8">❤️ Your Wishlist</h1>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {wishlistItems.map((item) => (
-          <div key={item.id} className="bg-white rounded-xl shadow hover:shadow-lg transition flex flex-col">
+          <div key={item.id} className="bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition flex flex-col">
             <Link to={`/product/${item.id}`}>
-              <div className="h-48 flex items-center justify-center p-4 bg-gray-50 rounded-t-xl">
+              <div className="h-48 flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-700 rounded-t-xl">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -40,11 +40,11 @@ const Wishlist = () => {
             </Link>
 
             <div className="p-4 flex flex-col flex-1">
-              <h3 className="text-sm font-semibold text-gray-800 line-clamp-2 mb-1">
+              <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-100 line-clamp-2 mb-1">
                 {item.title}
               </h3>
-              <p className="text-teal-700 font-bold text-lg mb-4">
-                ${item.price}
+              <p className="text-teal-700 dark:text-teal-400 font-bold text-lg mb-4">
+                ₹{item.price}
               </p>
 
               <div className="flex gap-2 mt-auto">

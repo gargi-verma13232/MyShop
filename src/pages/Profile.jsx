@@ -27,27 +27,27 @@ const Profile = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">👤 My Profile</h1>
+      <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8">👤 My Profile</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
         {/* Profile Card */}
-        <div className="md:col-span-2 bg-white rounded-2xl shadow p-6">
+        <div className="md:col-span-2 bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
           {/* Avatar */}
           <div className="flex items-center gap-4 mb-6">
             <div className="w-20 h-20 rounded-full bg-teal-700 flex items-center justify-center text-white text-3xl font-bold">
               {profile.name.charAt(0)}
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-800">{profile.name}</h2>
-              <p className="text-gray-500 text-sm">{profile.email}</p>
+              <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">{profile.name}</h2>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">{profile.email}</p>
               <span className="text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full mt-1 inline-block">
                 Premium Member ⭐
               </span>
             </div>
           </div>
 
-          <hr className="mb-6" />
+          <hr className="mb-6 border-gray-200 dark:border-gray-700" />
 
           {/* Editable Fields */}
           {editing ? (
@@ -59,7 +59,7 @@ const Profile = () => {
                 { label: "Address", key: "address" },
               ].map((field) => (
                 <div key={field.key}>
-                  <label className="text-sm text-gray-500 mb-1 block">
+                  <label className="text-sm text-gray-500 dark:text-gray-400 mb-1 block">
                     {field.label}
                   </label>
                   <input
@@ -67,7 +67,7 @@ const Profile = () => {
                     onChange={(e) =>
                       setTemp({ ...temp, [field.key]: e.target.value })
                     }
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm outline-none focus:border-teal-500"
+                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-4 py-2 text-sm outline-none focus:border-teal-500"
                   />
                 </div>
               ))}
@@ -81,7 +81,7 @@ const Profile = () => {
                 </button>
                 <button
                   onClick={() => setEditing(false)}
-                  className="flex-1 bg-gray-100 text-gray-600 py-2 rounded-lg hover:bg-gray-200 transition"
+                  className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition"
                 >
                   Cancel
                 </button>
@@ -98,8 +98,8 @@ const Profile = () => {
                 <div key={field.label} className="flex items-center gap-3">
                   <span className="text-xl">{field.icon}</span>
                   <div>
-                    <p className="text-xs text-gray-400">{field.label}</p>
-                    <p className="text-sm font-semibold text-gray-700">
+                    <p className="text-xs text-gray-400 dark:text-gray-500">{field.label}</p>
+                    <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                       {field.value}
                     </p>
                   </div>
@@ -120,33 +120,33 @@ const Profile = () => {
         <div className="flex flex-col gap-4">
 
           {/* Stats */}
-          <div className="bg-white rounded-2xl shadow p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-4">📊 My Stats</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+            <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">📊 My Stats</h3>
             <div className="flex flex-col gap-4">
               <div className="bg-teal-50 rounded-xl p-4 text-center">
                 <p className="text-3xl font-bold text-teal-700">
                   {cartItems.length}
                 </p>
-                <p className="text-sm text-gray-500 mt-1">Items in Cart</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Items in Cart</p>
               </div>
               <div className="bg-red-50 rounded-xl p-4 text-center">
                 <p className="text-3xl font-bold text-red-400">
                   {wishlistItems.length}
                 </p>
-                <p className="text-sm text-gray-500 mt-1">Wishlist Items</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Wishlist Items</p>
               </div>
               <div className="bg-amber-50 rounded-xl p-4 text-center">
                 <p className="text-3xl font-bold text-amber-500">
-                  ${totalSpent}
+                  ₹{totalSpent}
                 </p>
-                <p className="text-sm text-gray-500 mt-1">Cart Value</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Cart Value</p>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="bg-white rounded-2xl shadow p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-4">🔗 Quick Links</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow p-6">
+            <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">🔗 Quick Links</h3>
             <div className="flex flex-col gap-2">
               <Link
                 to="/cart"

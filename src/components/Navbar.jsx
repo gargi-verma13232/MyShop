@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ theme, toggleTheme }) => {
   const cartItems = useSelector((state) => state.cart.items);
   const wishlistItems = useSelector((state) => state.wishlist.items);
   const [search, setSearch] = useState("");
@@ -14,12 +14,12 @@ const Navbar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (search.trim()) {
-      navigate(`/?search=${search}`);
+      navigate(`/products?search=${search}`);
     }
   };
 
   return (
-    <nav className="bg-teal-700 text-white sticky top-0 z-50 shadow-lg">
+    <nav className="bg-teal-700 dark:bg-gray-900 text-white sticky top-0 z-50 shadow-lg transition-colors duration-200">
       {/* Top Bar */}
       <div className="flex items-center justify-between px-4 py-3 gap-4">
         
@@ -35,7 +35,7 @@ const Navbar = () => {
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-4 py-2 rounded-l-md text-gray-800 outline-none text-sm"
+            className="w-full px-4 py-2 rounded-l-md text-gray-800 dark:text-gray-200 dark:bg-gray-700 outline-none text-sm"
           />
           <button
             type="submit"
@@ -48,6 +48,23 @@ const Navbar = () => {
         {/* Right Icons */}
         <div className="flex items-center gap-5 text-sm font-medium">
           
+          {/* Theme Toggle */}
+          <button onClick={toggleTheme} className="text-xl hover:text-amber-400 transition" aria-label="Toggle Theme">
+            {theme === "dark" ? "🌞" : "🌙"}
+          </button>
+
+          {/* Home */}
+          <Link to="/" className="flex flex-col items-center hover:text-amber-400 transition">
+            <span className="text-xl">🏠</span>
+            <span className="text-xs">Home</span>
+          </Link>
+
+          {/* Products */}
+          <Link to="/products" className="flex flex-col items-center hover:text-amber-400 transition">
+            <span className="text-xl">🛍️</span>
+            <span className="text-xs">Products</span>
+          </Link>
+
           {/* Wishlist */}
           <Link to="/wishlist" className="flex flex-col items-center hover:text-amber-400 transition">
             <span className="text-xl">❤️</span>
@@ -81,19 +98,6 @@ const Navbar = () => {
           </Link>
 
         </div>
-      </div>
-
-      {/* Category Bar */}
-      <div className="bg-teal-800 px-4 py-2 flex gap-6 text-sm overflow-x-auto">
-        {["All", "Electronics", "Jewelery", "Men's Clothing", "Women's Clothing"].map((cat) => (
-          <Link
-            key={cat}
-            to={cat === "All" ? "/" : `/?category=${cat.toLowerCase()}`}
-            className="whitespace-nowrap hover:text-amber-400 transition"
-          >
-            {cat}
-          </Link>
-        ))}
       </div>
     </nav>
   );

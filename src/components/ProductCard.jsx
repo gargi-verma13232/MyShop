@@ -9,10 +9,10 @@ const ProductCard = ({ product }) => {
   const isWishlisted = wishlist.some((item) => item.id === product.id);
 
   return (
-    <div className="bg-white rounded-xl shadow hover:shadow-lg transition duration-200 flex flex-col">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition duration-200 flex flex-col">
       {/* Image */}
       <Link to={`/product/${product.id}`}>
-        <div className="h-48 flex items-center justify-center p-4 bg-gray-50 rounded-t-xl">
+        <div className="h-48 flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-700 rounded-t-xl">
           <img
             src={product.image}
             alt={product.title}
@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
       {/* Info */}
       <div className="p-4 flex flex-col flex-1">
         <Link to={`/product/${product.id}`}>
-          <h3 className="text-sm font-semibold text-gray-800 line-clamp-2 hover:text-teal-700 mb-1">
+          <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-100 line-clamp-2 hover:text-teal-700 dark:hover:text-teal-400 mb-1">
             {product.title}
           </h3>
         </Link>
@@ -38,8 +38,8 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
 
-        <p className="text-teal-700 font-bold text-lg mb-3">
-          ${product.price}
+        <p className="text-teal-700 dark:text-teal-400 font-bold text-lg mb-3">
+          ₹{product.price}
         </p>
 
         {/* Buttons */}
@@ -59,7 +59,7 @@ const ProductCard = ({ product }) => {
             className={`px-3 py-2 rounded-lg text-lg transition ${
               isWishlisted
                 ? "bg-red-100 text-red-500"
-                : "bg-gray-100 text-gray-400 hover:text-red-400"
+                : "bg-gray-100 dark:bg-gray-700 text-gray-400 hover:text-red-400"
             }`}
           >
             {isWishlisted ? "❤️" : "🤍"}
